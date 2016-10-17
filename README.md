@@ -1,6 +1,6 @@
 # jscpd-vscode
 
-VSCode extension for for the copy/paste detector [jscpd](https://github.com/kucherenko/jscpd)
+VSCode extension for the copy/paste detector [jscpd](https://github.com/kucherenko/jscpd)
 
 ## Extension Settings
 

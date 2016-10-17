@@ -4,6 +4,12 @@
   "description": "Copy/Paste Detector (jscpd)",
   "version": "0.1.0",
   "publisher": "paulhoughton",
+  "license": "MIT",
+  "homepage": "https://github.com/paulhoughton/vscode-jscpd/blob/master/README.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/paulhoughton/vscode-jscpd"
+  },
   "engines": {
     "vscode": "^1.5.0"
   },

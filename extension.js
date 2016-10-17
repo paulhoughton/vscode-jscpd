@@ -25,11 +25,20 @@ function activate(context) {
              return;
         } 
 
-        vscode.window.showQuickPick(output.map.clones.map(data => ({
+        let quickPickList = output.map.clones.map(data => ({
             label: formatName(data.firstFile,  data.firstFileStart, data.linesCount) + " <-> " + formatName(data.secondFile,  data.secondFileStart, data.linesCount),
             data
             })
-        )).then(({data}) => {
+        );
+
+        const {percentage, duplications, lines} = output.report.statistics;
+
+        quickPickList.unshift({
+            label: "",
+            description:`${percentage}% (${duplications} lines) duplicated lines out of ${lines} total lines of code`,
+            data:""});
+
+        vscode.window.showQuickPick(quickPickList).then(({data}) => {
             vscode.workspace.openTextDocument(data.firstFile).then(doc => 
                 vscode.window.showTextDocument(doc, vscode.ViewColumn.One)
             ).then(doc => {

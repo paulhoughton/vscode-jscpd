@@ -1,76 +1,82 @@
 {
-    "name": "vscode-jscpd",
-    "displayName": "Copy/Paste Detector",
-    "description": "Copy/Paste Detector (jscpd) to find duplicated code",
-    "version": "0.2.0",
-    "publisher": "paulhoughton",
-    "license": "MIT",
-    "homepage": "https://github.com/paulhoughton/vscode-jscpd/blob/master/README.md",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/paulhoughton/vscode-jscpd"
-    },
-    "engines": {
-        "vscode": "^1.5.0"
-    },
-    "categories": [
-        "Other"
+  "name": "vscode-jscpd",
+  "displayName": "Copy/Paste Detector",
+  "description": "Copy/Paste Detector (jscpd) to find duplicated code",
+  "version": "0.3.0",
+  "publisher": "paulhoughton",
+  "license": "MIT",
+  "homepage":
+    "https://github.com/paulhoughton/vscode-jscpd/blob/master/README.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/paulhoughton/vscode-jscpd"
+  },
+  "engines": {
+    "vscode": "^1.5.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": ["onCommand:extension.jscpd"],
+  "main": "./src/extension",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.jscpd",
+        "title": "Copy/Paste Detector"
+      }
     ],
-    "activationEvents": [
-        "onCommand:extension.jscpd"
-    ],
-    "main": "./src/extension",
-    "contributes": {
-        "commands": [
-            {
-                "command": "extension.jscpd",
-                "title": "Copy/Paste Detector"
-            }
-        ],
-        "menus": {
-            "explorer/context": [
-                {
-                    "command": "extension.jscpd"
-                }
-            ]
-        },
-        "configuration": {
-            "type": "object",
-            "title": "Copy/Paste Detector configuration",
-            "properties": {
-                "jscpd.exclude": {
-                    "type": "array",
-                    "default": [
-                        "**/*.min.js",
-                        "**/node_modules/**"
-                    ],
-                    "description": "Files to ignore"
-                },
-                "jscpd.minLines": {
-                    "type": "number",
-                    "default": 5,
-                    "description": "min size of duplication in code lines"
-                },
-                "jscpd.minTokens": {
-                    "type": "number",
-                    "default": 70,
-                    "description": "min size of duplication in code tokens"
-                }
-            }
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "extension.jscpd"
         }
+      ]
     },
-    "scripts": {
-        "postinstall": "node ./node_modules/vscode/bin/install"
-    },
-    "devDependencies": {
-        "@types/mocha": "^2.2.32",
-        "@types/node": "^6.0.40",
-        "eslint": "^3.6.0",
-        "mocha": "^2.3.3",
-        "typescript": "^2.0.3",
-        "vscode": "^1.0.0"
-    },
-    "dependencies": {
-        "jscpd": "^0.6.5"
+    "configuration": {
+      "type": "object",
+      "title": "Copy/Paste Detector configuration",
+      "properties": {
+        "jscpd.exclude": {
+          "type": "array",
+          "default": ["**/*.min.js", "**/node_modules/**"],
+          "description": "Files to ignore"
+        },
+        "jscpd.files": {
+          "type": "files",
+          "description": "glob pattern for find code"
+        },
+        "jscpd.minLines": {
+          "type": "number",
+          "default": 5,
+          "description": "min size of duplication in code lines"
+        },
+        "jscpd.minTokens": {
+          "type": "number",
+          "default": 70,
+          "description": "min size of duplication in code tokens"
+        },
+        "jscpd.languagesExts": {
+          "type": "string",
+          "description": "list of languages with file extensions"
+        },
+        "jscpd.skipComments": {
+          "type": "boolean",
+          "description": "skip comments in code"
+        }
+      }
     }
+  },
+  "scripts": {
+    "postinstall": "node ./node_modules/vscode/bin/install"
+  },
+  "devDependencies": {
+    "@types/mocha": "^2.2.48",
+    "@types/node": "^8.9.5",
+    "eslint": "^4.18.2",
+    "mocha": "^4.1.0",
+    "typescript": "^2.7.2",
+    "vscode": "^1.1.13"
+  },
+  "dependencies": {
+    "jscpd": "^0.6.17"
+  }
 }
